@@ -30,7 +30,7 @@ def profit_array(w, p, C, n):
 
             total_p[capacity][num_obj] = total_p[capacity][num_obj-1]
 
-            for index in range(len(w)):
+            for index in range(num_obj):
                 weight = w[index]
                 profit = p[index]
                 if weight <= capacity:
@@ -47,6 +47,7 @@ def print_profit_array(C, n, total_profit):
         for m in range(n+1):
             print(total_profit[i][m], end=" ")
         print()
+    print()
 
 
 def recursive_func(w, p, C, n):
