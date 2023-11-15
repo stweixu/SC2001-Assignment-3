@@ -45,7 +45,7 @@ def print_profit_array(C, n, total_profit):
         s = "Row " + str(i)
         print("{:<8s}".format(s), end="")
         for m in range(n+1):
-            print(total_profit[i][m], end=" ")
+            print(f"{total_profit[i][m] : ^3}", end=" ")
         print()
     print()
 
