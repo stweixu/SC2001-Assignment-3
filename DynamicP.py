@@ -3,17 +3,26 @@ def main():
     p1 = [7, 6, 9]
     C1 = 14
     n1 = len(w1)
-    total_profit_1 = profit_array(w1, p1, C1, n1)
-    print_profit_array(C1, n1, total_profit_1)
+
+    total_profit_4a = profit_array(w1, p1, C1, n1)
+    recur_4a = recursive_func(w1, p1, C1, n1)
+
+    print("-------Part 4a-------")
+    print(f"P(14) using Recursion = {recur_4a}")
+    print(f"P(14) using DP = {total_profit_4a[C1][n1]}\n")
+    #print_profit_array(C1, n1, total_profit_1)
 
     w2 = [5, 6, 8]
     p2 = [7, 6, 9]
     C2 = 14
     n2 = len(w1)
-    total_profit_2 = profit_array(w2, p2, C2, n2)
-    print_profit_array(C2, n2, total_profit_2)
 
-    print(recursive_func(w2, p2, 14, 3))
+    total_profit_2 = profit_array(w2, p2, C2, n2)
+    recur_4b = recursive_func(w2, p2, C2, n2)
+    print("-------Part 4b-------")
+    print(f"P(14) using Recursion = {recur_4b}")
+    print(f"P(14) using DP = {total_profit_2[C2][n2]}\n")
+    #print_profit_array(C2, n2, total_profit_2)
 
 
 def profit_array(w, p, C, n):
