@@ -4,59 +4,36 @@ def main():
     C1 = 14
     n1 = len(w1)
 
-    total_profit_4a = profit_array(w1, p1, C1, n1)
+    total_profit_4a = profit_array(w1, p1, C1)
     recur_4a = recursive_func(w1, p1, C1, n1)
 
     print("-------Part 4a-------")
     print(f"P(14) using Recursion = {recur_4a}")
-    print(f"P(14) using DP = {total_profit_4a[C1][n1]}\n")
-    #print_profit_array(C1, n1, total_profit_1)
+    print(f"P(14) using DP = {total_profit_4a}\n")
 
     w2 = [5, 6, 8]
     p2 = [7, 6, 9]
     C2 = 14
     n2 = len(w1)
 
-    total_profit_2 = profit_array(w2, p2, C2, n2)
+    total_profit_2 = profit_array(w2, p2, C2)
     recur_4b = recursive_func(w2, p2, C2, n2)
     print("-------Part 4b-------")
     print(f"P(14) using Recursion = {recur_4b}")
-    print(f"P(14) using DP = {total_profit_2[C2][n2]}\n")
-    #print_profit_array(C2, n2, total_profit_2)
+    print(f"P(14) using DP = {total_profit_2}\n")
 
 
-def profit_array(w, p, C, n):
-    total_p = [[0] * (n+1) for _ in range(C+1)]
+def profit_array(w, p, C):
+    total_p = [0] * (C+1)
 
-    for i in range(1, C+1):
-        total_p[i][0] = 0
+    for obj in range(len(w)):
+        weight = w[obj]
+        profit = p[obj]
+        for capacity in range(C+1):
+            if weight <= capacity:
+                total_p[capacity] = max(total_p[capacity], total_p[capacity-weight] + profit)
 
-    for i in range(1, n+1):
-        total_p[1][i] = 0
-
-    for capacity in range(1, C+1):
-        for num_obj in range(1, n+1):
-
-            total_p[capacity][num_obj] = total_p[capacity][num_obj-1]
-
-            for index in range(num_obj):
-                weight = w[index]
-                profit = p[index]
-                if weight <= capacity:
-                    new_profit = total_p[capacity-weight][num_obj] + profit
-                    if total_p[capacity][num_obj] <= new_profit:
-                        total_p[capacity][num_obj] = new_profit
-    return total_p
-
-
-def print_profit_array(C, n, total_profit):
-    for i in range(C+1):
-        s = "Row " + str(i)
-        print("{:<8s}".format(s), end="")
-        for m in range(n+1):
-            print(f"{total_profit[i][m] : ^3}", end=" ")
-        print()
-    print()
+    return total_p[C]
 
 
 def recursive_func(w, p, C, n):
