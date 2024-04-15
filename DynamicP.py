@@ -7,7 +7,7 @@ def main():
     total_profit_4a = profit_array(w1, p1, C1)
     recur_4a = recursive_func(w1, p1, C1, n1)
 
-    print("-------Part 4a-------")
+    print("--------Part 4a--------")
     print(f"P(14) using Recursion = {recur_4a}")
     print(f"P(14) using DP = {total_profit_4a}\n")
 
@@ -18,7 +18,7 @@ def main():
 
     total_profit_2 = profit_array(w2, p2, C2)
     recur_4b = recursive_func(w2, p2, C2, n2)
-    print("-------Part 4b-------")
+    print("--------Part 4b--------")
     print(f"P(14) using Recursion = {recur_4b}")
     print(f"P(14) using DP = {total_profit_2}\n")
 
